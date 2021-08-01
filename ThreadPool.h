@@ -18,7 +18,7 @@ public:
     {
         using returnType = typename std::invoke_result<F, Args ...>::type;
 
-        auto task = std::make_shared<std::packaged_task<returnType()>>([&]() { return taskFunction(args...); });
+        auto task = std::make_shared<std::packaged_task<returnType()>>(std::bind(std::forward<F>(taskFunction), std::forward<Args>(args)...));
         auto future = (*task).get_future();
 
         {
