@@ -6,7 +6,7 @@ ThreadPool::ThreadPool(unsigned int numberThreads)  : _isStop(false)
     {
         this->_workers.emplace_back([&]()
         {
-            std::function < void() > task;
+            std::function <void()> task;
 
             while (!_isStop)
             {
