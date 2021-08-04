@@ -17,7 +17,7 @@ ThreadPool::ThreadPool(unsigned int numberThreads)  : _isStop(false)
                     {
                         _waiterForNewTask.wait(lock);
 
-                        if (_isStop || _tasks.empty())
+                        if (_isStop)
                         {
                             break;
                         }
